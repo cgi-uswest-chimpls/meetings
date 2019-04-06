@@ -20,13 +20,13 @@ public class MeetingsApplicationController {
 	  private MeetingRepository repository;
 	  
 	  @RequestMapping("/meetingsByPerson/{idprsn}")
-	  public Set<Meeting> findMeetingsByPerson(@PathVariable("idprsn") BigDecimal idprsn) {
-		  return repository.findAllByIdprsnOrderByDtstartDesc(idprsn);
+	  public Set<Meeting> findMeetingsByPerson(@PathVariable("idprsn") String idprsn) {
+		  return repository.findAllByIdprsnOrderByDtstartDesc(new BigDecimal(idprsn));
 	  }
 	  
 	  @RequestMapping("/currentMeetingsByPerson/{idprsn}")
-	  public Set<Meeting> findFirstCurrentMeetings(@PathVariable("idprsn") BigDecimal idprsn) {
-		  return repository.findFirstCurrentMeetings(idprsn);
+	  public Set<Meeting> findFirstCurrentMeetings(@PathVariable("idprsn") String idprsn) {
+		  return repository.findFirstCurrentMeetings(new BigDecimal(idprsn));
 	  }
 	
 }
